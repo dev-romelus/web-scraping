@@ -19,7 +19,7 @@ curseur=conn.cursor()
 
 locale.setlocale(locale.LC_TIME,'')
 date =time.strftime('%Y-%m-%d_%H:%M:%S')
-logging.basicConfig(filename='/Users/romelus/Documents/Sites/StatFoot/fichier_log/fichier.log',level=logging.DEBUG, format='%(asctime)s:%(name)s:%(message)s')
+logging.basicConfig(filename='/Users/romelus/Desktop/WebScraping/fichier_log/fichier.log',level=logging.DEBUG, format='%(asctime)s:%(name)s:%(message)s')
 
 TIME= 200
 s = sched.scheduler(time.time, time.sleep)
@@ -31,7 +31,7 @@ def traitements():
 
         doc = Document()
         doc.add_paragraph(str(source))
-        doc.save('/Users/romelus/Documents/Sites/StatFoot/brut_data/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'-'+nomFile+'.docx')
+        doc.save('/Users/romelus/Desktop/WebScraping/brut_data/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'-'+nomFile+'.docx')
         logging.debug('Données brut sauvegardé : '+nomFile)
 
 
@@ -58,7 +58,7 @@ def traitements():
         dataBrut(source, 'Match ligue des champion')
         metadata = metaData(link,'Match ligue des champion')
 
-        with open('/Users/romelus/Documents/Sites/StatFoot/metadata/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'-metadata_match.json', 'a', encoding='utf-8') as f:
+        with open('/Users/romelus/Desktop/WebScraping/metadata/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'-metadata_match.json', 'a', encoding='utf-8') as f:
             json.dump(metadata, f, ensure_ascii=False, indent=4)
 
         
@@ -91,7 +91,7 @@ def traitements():
             dates.append(date)
         print(dates)
 
-        name_file= '/Users/romelus/Documents/Sites/StatFoot/fichier_csv/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'_'+'macths_ligue1.csv'
+        name_file= '/Users/romelus/Desktop/WebScraping/fichier_csv/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'_'+'macths_ligue1.csv'
         with open(name_file, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(["Heure","Equipe1", "Equipe2", "Date_match"])
@@ -116,7 +116,7 @@ def traitements():
         dataBrut(source, 'top_player')
         metadata = metaData(link,'top_player')
 
-        with open('/Users/romelus/Documents/Sites/StatFoot/metadata/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'-metadata_players.json', 'a', encoding='utf-8') as f:
+        with open('/Users/romelus/Desktop/WebScraping/metadata/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'-metadata_players.json', 'a', encoding='utf-8') as f:
             json.dump(metadata, f, ensure_ascii=False, indent=4)
 
         '''*-------- Rang --------*'''
@@ -175,7 +175,7 @@ def traitements():
 
         '''*-------- Creation du fichier CSV --------*'''
 
-        name_file= '/Users/romelus/Documents/Sites/StatFoot/fichier_csv/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'_'+'top_player.csv'
+        name_file= '/Users/romelus/Desktop/WebScraping/fichier_csv/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'_'+'top_player.csv'
         with open(name_file, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(["Rang","Player", "But", "Nb_match"])
@@ -234,7 +234,7 @@ def traitements():
         dataBrut(source1,'top_team')
         metadata2 = metaData(link1,'top_team')
 
-        with open('/Users/romelus/Documents/Sites/StatFoot/metadata/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'-metadata_team.json', 'a', encoding='utf-8') as f:
+        with open('/Users/romelus/Desktop/WebScraping/metadata/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'-metadata_team.json', 'a', encoding='utf-8') as f:
             json.dump(metadata2, f, ensure_ascii=False, indent=4)
 
         list_rank=[]
@@ -273,7 +273,7 @@ def traitements():
 
         '''*-------- Creation du fichier CSV --------*'''
 
-        name_file= '/Users/romelus/Documents/Sites/StatFoot/fichier_csv/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'_'+'top_team.csv'
+        name_file= '/Users/romelus/Desktop/WebScraping/fichier_csv/'+str(time.strftime('%Y-%m-%d_%H:%M:%S'))+'_'+'top_team.csv'
         with open(name_file, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(["Rang","Team", "Point"])
